@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}💤 Naplify{% endblock %}
+
+{% block body %}
+
+    <style>
+        body {
+            background: #121212;
+            color: #E0E0E0;
+            font: 18px/1.5 sans-serif;
+            margin: 0;
+        }
+        .wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+        }
+        #countdown {
+            font-size: 2em;
+        }
+    </style>
+
+    <div class="wrapper">
+
+        <h1>Enjoy 😴</h1>
+        <div id="countdown">{{ napLength }}:00</div>
+
+        <script>
+            function startCountdown(minutes) {
+                let time = minutes * 60;
+                const countdownElement = document.getElementById('countdown');
+
+                const interval = setInterval(() => {
+                    const minutes = Math.floor(time / 60);
+                    const seconds = time % 60;
+
+                    countdownElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                    if (time <= 0) {
+                        clearInterval(interval);
+                        alert('Time is up!');
+                    } else {
+                        time--;
+                    }
+                }, 1000);
+            }
+
+            startCountdown({{ napLength }});
+        </script>
+    </div>
+
+{% endblock %}
