@@ -18,16 +18,23 @@
     </style>
 
     <div class="wrapper">
-        <h1>Welcome to Naplify 👋</h1>
+        <h1>🛏️✨
+            <br>
+            Welcome to Naplify
+        </h1>
 
         <br>
 
         <form action="{{ path('index') }}" method="post">
-            <label for="napLength"></label>
-            <input type="range" id="napLength" name="napLength" min="20" max="30" value="25" oninput="updateMinutes()">
-            <span id="lengthValue">25 minutes</span>
-            <input type="hidden" name="_token" value="{{ csrf_token('slider_form') }}">
-            <button type="submit">Submit</button>
+            <div>
+                <label for="napLength"></label>
+                <input type="range" id="napLength" name="napLength" min="20" max="30" value="25" oninput="updateMinutes()">
+                <span id="lengthValue">25 minutes</span>
+            </div>
+            <div>
+                <input type="hidden" name="_token" value="{{ csrf_token('slider_form') }}">
+                <button type="submit">Nap 😴</button>
+            </div>
         </form>
 
         <script>
