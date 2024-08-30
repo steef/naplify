@@ -9,7 +9,10 @@
         {% endblock %}
 
         {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            {% block importmap %}
+                {{ importmap('app') }}
+                {{ importmap('updateMinutes') }}
+            {% endblock %}
         {% endblock %}
     </head>
     <body>

@@ -52,24 +52,15 @@
 
         <form action="{{ path('index') }}" method="post">
             <div>
-                <label for="napLength"></label>
-                <input type="range" id="napLength" name="napLength" min="20" max="30" value="25" oninput="updateMinutes()">
-                <span id="lengthValue">25 minutes</span>
+                <label for="inputInMinutes"></label>
+                <input type="range" id="inputInMinutes" name="napLength" min="20" max="30" value="25" oninput="updateMinutes()">
+                <span id="displayInMinutes">25 minutes</span>
             </div>
             <div>
                 <input type="hidden" name="_token" value="{{ csrf_token('slider_form') }}">
                 <button type="submit">Nap 😴</button>
             </div>
         </form>
-
-        <script>
-            function updateMinutes() {
-                const napLengthInput = document.getElementById('napLength').value;
-                const napLengthDisplay = document.getElementById('lengthValue');
-
-                napLengthDisplay.innerText = `${napLengthInput} minutes`;
-            }
-        </script>
     </div>
 
 {% endblock %}
