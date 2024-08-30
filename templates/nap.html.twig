@@ -17,7 +17,7 @@
             flex-direction: column;
             align-items: center;
         }
-        #countdown {
+        #napLength {
             font-size: 2em;
         }
     </style>
@@ -25,29 +25,27 @@
     <div class="wrapper">
 
         <h1>Enjoy 😴</h1>
-        <div id="countdown">{{ napLength }}:00</div>
+        <div id="napLength">{{ napLength }}:00</div>
 
         <script>
-            function startCountdown(minutes) {
-                let time = minutes * 60;
-                const countdownElement = document.getElementById('countdown');
+            function startCountdown(remainingMinutes) {
+                let remainingSeconds = (remainingMinutes * 60) - 1;
 
                 const interval = setInterval(() => {
-                    const minutes = Math.floor(time / 60);
-                    const seconds = time % 60;
+                    let minutes = Math.floor(remainingSeconds / 60);
+                    let seconds = remainingSeconds % 60;
 
-                    countdownElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                    document.getElementById('napLength').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-                    if (time <= 0) {
+                    remainingSeconds--;
+
+                    if (remainingSeconds < 0 ) {
                         clearInterval(interval);
-                        alert('Time is up!');
-                    } else {
-                        time--;
                     }
                 }, 1000);
             }
 
-            startCountdown({{ napLength }});
+            startCountdown({{ napLength }})
         </script>
     </div>
 
