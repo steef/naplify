@@ -25,27 +25,14 @@
     <div class="wrapper">
 
         <h1>Enjoy 😴</h1>
-        <div id="napLength">{{ napLength }}:00</div>
+        <div id="napLength" data-nap-length="{{ napLength }}">{{ napLength }}:00</div>
 
         <script>
-            function startCountdown(remainingMinutes) {
-                let remainingSeconds = (remainingMinutes * 60) - 1;
+            document.addEventListener('DOMContentLoaded', () => {
+                startCountdown();
+            });
 
-                const interval = setInterval(() => {
-                    let minutes = Math.floor(remainingSeconds / 60);
-                    let seconds = remainingSeconds % 60;
-
-                    document.getElementById('napLength').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-
-                    remainingSeconds--;
-
-                    if (remainingSeconds < 0 ) {
-                        clearInterval(interval);
-                    }
-                }, 1000);
-            }
-
-            startCountdown({{ napLength }})
+            startCountdown();
         </script>
     </div>
 

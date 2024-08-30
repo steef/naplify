@@ -16,6 +16,10 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
+    'nap' => [
+        'path' => './assets/nap.js',
+        'entrypoint' => true,
+    ],
     'updateMinutes' => [
         'path' => './assets/updateMinutes.js',
         'entrypoint' => true,
