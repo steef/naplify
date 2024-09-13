@@ -4,8 +4,8 @@
     "description": "A simple nap timer app.",
     "start_url": "/index.html",
     "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#4CAF50",
+    "background_color": "#191919",
+    "theme_color": "#191919",
     "icons": [
       {
         "src": "/icon-180x180.png",
