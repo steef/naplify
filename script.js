@@ -1,4 +1,5 @@
 let countdownInterval;
+let noSleep = new NoSleep(); // Create a new instance of NoSleep
 
 function updateMinutes(value) {
   document.getElementById("nap-button").innerText = `Nap for ${value} minutes`;
@@ -12,6 +13,9 @@ function startNap() {
   const minutes = document.getElementById("customRange3").value;
   const milliseconds = minutes * 60 * 1000;
   const endTime = Date.now() + milliseconds; // Record the end time
+
+  // Activate NoSleep.js to prevent the device from sleeping
+  noSleep.enable(); 
 
   // Hide the configuration screen and show the overlay
   document.querySelector(".container-fluid").classList.add("hidden");
@@ -42,4 +46,7 @@ function endNap() {
 
   // Clear the timer display
   document.getElementById("overlay-timer").innerText = "";
+
+  // Disable NoSleep.js so the device can sleep again
+  noSleep.disable();
 }
