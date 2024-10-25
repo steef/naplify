@@ -1,5 +1,6 @@
 let countdownInterval;
 let noSleep = new NoSleep(); // Create a new instance of NoSleep
+const alarmSound = document.getElementById("alarm-sound");
 
 function updateMinutes(value) {
   document.getElementById("nap-button").innerText = `Nap for ${value} minutes`;
@@ -29,14 +30,25 @@ function startNap() {
     const timeLeft = endTime - Date.now();
     if (timeLeft <= 0) {
       clearInterval(countdownInterval);
+      playAlarm(); // Play the alarm sound
       alert("Time's up! Wake up! 🛏️"); // Wake up alert
-      endNap();
     } else {
       const minutesLeft = Math.floor(timeLeft / (1000 * 60));
       const secondsLeft = Math.floor((timeLeft % (1000 * 60)) / 1000);
       document.getElementById("overlay-timer").innerText = `${minutesLeft}m ${secondsLeft}s`;
     }
   }, 1000);
+}
+
+
+function playAlarm() {
+  alarmSound.play();
+}
+
+function stopAlarm() {
+  alarmSound.pause();
+  alarmSound.currentTime = 0;
+  endNap();
 }
 
 function endNap() {
